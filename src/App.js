@@ -1,7 +1,20 @@
 import logo from './logo.svg';
 import './App.css';
+import commerce from './lib/commerce';
+import { useEffect } from 'react';
 
 function App() {
+
+
+  useEffect(() => {
+    commerce.categories.list().then((products) => {
+      console.log(products.data);
+    }).catch((error) => {
+      console.log('There was an error fetching the products', error)
+    });
+  }, [])
+  
+
   return (
     <div className="App">
       <header className="App-header">
